@@ -1,0 +1,15 @@
+I got this to run with:
+
+clang -flto -std=c99 -O3 -Wall -Wextra -Wpedantic -Werror main.c
+
+which outputs a.out.
+
+
+Thoughts: While this seems familiar as someone who writes plenty of go, this syntax seems a bit alien
+```
+double A[5]
+```
+It seems like I'm declaring a variable name A which is an array of length 5 with items that are type double,
+but I'm not quite sure why you aren't declaring something like `[]double` like you would in go. My guess is that
+if you declare a `[5]` this implies that you are making A as an array of length 5 in which the contents of the array
+are type `double`
