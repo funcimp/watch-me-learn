@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <tgmath.h>
 
-int main(void) {
+void loops(void) {
 	int i = 0;
 
 	// this is functionally the same as while(true)
@@ -50,4 +50,12 @@ int main(void) {
 		x *= (2.0 - prod); // Heron approximation
 		printf("%f\n", x);
 	}
+}
+
+// I'm going to play with some sorting logic here.
+void sort(void) { printf("sort!\n"); }
+
+int main(void) {
+	loops();
+	sort();
 }
