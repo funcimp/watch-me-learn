@@ -52,10 +52,66 @@ void loops(void) {
 	}
 }
 
-// I'm going to play with some sorting logic here.
-void sort(void) { printf("sort!\n"); }
+void printArray(int a[], int s) {
+	printf("[ ");
+	for (int i = 0; i < s; i++) {
+		printf("%d ", a[i]);
+	};
+	printf("]\n");
+}
+
+// Implimentation of mergeSort
+// guided by: https://www.interviewbit.com/tutorial/merge-sort-algorithm/
+
+void merge(int* a, int s, int m, int e) {
+	int t[e - s + 1];
+	int i = s;
+	int j = m + 1;
+	int k = 0;
+
+	while (i <= m && j <= e) {
+		if (a[i] <= a[j]) {
+			t[k] = a[i];
+			++i;
+		} else {
+			t[k] = a[j];
+			++j;
+		}
+		++k;
+	}
+
+	while (i <= m) {
+		t[k] = a[i];
+		++k;
+		++i;
+	}
+
+	while (j <= e) {
+		t[k] = a[j];
+		++k;
+		++j;
+	}
+
+	for (i = s; i <= e; i += 1) {
+		a[i] = t[i - s];
+	}
+}
+
+void mergeSort(int* a, int s, int e) {
+	if (s >= e) {
+		return;
+	}
+	int m = (s + e) / 2;
+	mergeSort(a, s, m);
+	mergeSort(a, m + 1, e);
+	merge(a, s, m, e);
+}
 
 int main(void) {
-	loops();
-	sort();
+	// loops();
+
+	int a[10] = {5, 3, 4, 9, 1, 6, 8, 0, 7, 2};
+	printArray(a, 10);
+	mergeSort(a, 0, 9);
+	printArray(a, 10);
 }
