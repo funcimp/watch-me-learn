@@ -52,6 +52,7 @@ void loops(void) {
 	}
 }
 
+// void printArray(int a[], int s) {
 void printArray(int a[], int s) {
 	printf("[ ");
 	for (int i = 0; i < s; i++) {
@@ -109,9 +110,9 @@ void mergeSort(int* a, int s, int e) {
 
 int main(void) {
 	// loops();
-
-	int a[10] = {5, 3, 4, 9, 1, 6, 8, 0, 7, 2};
-	printArray(a, 10);
-	mergeSort(a, 0, 9);
-	printArray(a, 10);
+	int a[] = {5, 3, 4, 9, 1, 6, 8, 0, 7, 2};
+	int s		= sizeof(a) / sizeof(a[0]);
+	printArray(a, s);
+	mergeSort(a, 0, s - 1);
+	printArray(a, s);
 }
