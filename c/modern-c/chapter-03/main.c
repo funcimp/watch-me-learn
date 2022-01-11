@@ -52,10 +52,9 @@ void loops(void) {
 	}
 }
 
-// void printArray(int a[], int s) {
-void printArray(int a[], int s) {
+void printArray(int a[], size_t s) {
 	printf("[ ");
-	for (int i = 0; i < s; i++) {
+	for (size_t i = 0; i < s; i++) {
 		printf("%d ", a[i]);
 	};
 	printf("]\n");
@@ -64,11 +63,11 @@ void printArray(int a[], int s) {
 // Implimentation of mergeSort
 // guided by: https://www.interviewbit.com/tutorial/merge-sort-algorithm/
 
-void merge(int* a, int s, int m, int e) {
+void merge(int* a, size_t s, size_t m, size_t e) {
 	int t[e - s + 1];
-	int i = s;
-	int j = m + 1;
-	int k = 0;
+	size_t i = s;
+	size_t j = m + 1;
+	size_t k = 0;
 
 	while (i <= m && j <= e) {
 		if (a[i] <= a[j]) {
@@ -98,11 +97,11 @@ void merge(int* a, int s, int m, int e) {
 	}
 }
 
-void mergeSort(int* a, int s, int e) {
+void mergeSort(int* a, size_t s, size_t e) {
 	if (s >= e) {
 		return;
 	}
-	int m = (s + e) / 2;
+	size_t m = (s + e) / 2;
 	mergeSort(a, s, m);
 	mergeSort(a, m + 1, e);
 	merge(a, s, m, e);
@@ -110,8 +109,8 @@ void mergeSort(int* a, int s, int e) {
 
 int main(void) {
 	// loops();
-	int a[] = {5, 3, 4, 9, 1, 6, 8, 0, 7, 2};
-	int s		= sizeof(a) / sizeof(a[0]);
+	int a[]	 = {5, 3, 4, 9, 1, 6, 8, 0, 7, 2};
+	size_t s = sizeof(a) / sizeof(a[0]);
 	printArray(a, s);
 	mergeSort(a, 0, s - 1);
 	printArray(a, s);
